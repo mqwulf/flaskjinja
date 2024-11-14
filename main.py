@@ -18,8 +18,9 @@ def guess(name):
     gender_response = requests.get(f"https://api.genderize.io/?name={name}")
     return render_template("guess.html", name=name.capitalize(), age=age_response.json()["age"], gender=gender_response.json()["gender"])
 
-@app.route("/blog")
-def blog():
+@app.route("/blog/<num>")
+def get_blog(num):
+    print(num)
     blog_url = "https://api.npoint.io/c594fae7ee846a6b8123"
     response = requests.get(blog_url)
     all_posts = response.json()
